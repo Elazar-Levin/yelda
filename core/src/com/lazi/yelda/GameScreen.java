@@ -50,7 +50,11 @@ public class GameScreen extends AbstractScreen {
 			atlas.findRegion("player1_stand_north"),
 			atlas.findRegion("player1_stand_south"),
 			atlas.findRegion("player1_stand_east"),
-			atlas.findRegion("player1_stand_west")//TODO
+			atlas.findRegion("player1_stand_west"),//TODO
+			new Animation(0.3f/2f, atlas.findRegions("player1_fight_north"), PlayMode.NORMAL),
+			new Animation(0.3f/2f, atlas.findRegions("player1_fight_south"), PlayMode.NORMAL),
+			new Animation(0.3f/2f, atlas.findRegions("player1_fight_east"), PlayMode.NORMAL),
+			new Animation(0.3f/2f, atlas.findRegions("player1_fight_west"), PlayMode.NORMAL)
 		);
 		
 		map = new TileMap(1000, 1000);
