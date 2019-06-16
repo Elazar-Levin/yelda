@@ -15,7 +15,7 @@ public class TileMap {
 					tiles[x][y] = new Tile(TERRAIN.MAIN_GRASS);
 				}
 				else {
-					tiles[x][y] = new Tile(TERRAIN.MAIN_WATER);
+					tiles[x][y] = new Tile(TERRAIN.MAIN_GRASS);
 				}
 			}
 		}

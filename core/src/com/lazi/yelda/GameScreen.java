@@ -35,16 +35,16 @@ public class GameScreen extends AbstractScreen {
 		
 		
 		TextureAtlas atlas1 = new TextureAtlas("res/Overworld.atlas");
-		water = atlas1.findRegion("basic_grass");
-		grass = atlas1.findRegion("basic_water");//TODO: update sprites
-		//grass2 = new Texture("res/grass2.png");//TODO: update sprites
+		water = atlas1.findRegion("basic_water");
+		grass = atlas1.findRegion("basic_grass");//TODO: update sprites
+		
 		batch = new SpriteBatch();
 		  
 		TextureAtlas atlas = app.getAssetManager().get("res/character.atlas", TextureAtlas.class);//TODO: make character atlas
 		//TextureAtlas atlas= new TextureAtlas("res/character.atlas");
 		AnimationSet animations = new AnimationSet(
 			new Animation(0.3f/2f, atlas.findRegions("player1_walk_north"), PlayMode.LOOP_PINGPONG),
-			new Animation(0.3f/2f, atlas.findRegions("player1_fight_south"), PlayMode.LOOP_PINGPONG),
+			new Animation(0.3f/2f, atlas.findRegions("player1_walk_south"), PlayMode.LOOP_PINGPONG),
 			new Animation(0.3f/2f, atlas.findRegions("player1_walk_east"), PlayMode.LOOP_PINGPONG),
 			new Animation(0.3f/2f, atlas.findRegions("player1_walk_west"), PlayMode.LOOP_PINGPONG),
 			atlas.findRegion("player1_stand_north"),
@@ -53,8 +53,8 @@ public class GameScreen extends AbstractScreen {
 			atlas.findRegion("player1_stand_west")//TODO
 		);
 		
-		map = new TileMap(10, 10);
-		player = new Actor(map, 0, 0, animations);
+		map = new TileMap(1000, 1000);
+		player = new Actor(map, 20, 20, animations);
 		camera = new Camera();
 		controller = new PlayerController(player);
 		

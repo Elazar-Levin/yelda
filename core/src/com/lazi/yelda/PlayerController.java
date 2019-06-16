@@ -8,7 +8,7 @@ import com.badlogic.gdx.InputAdapter;
 public class PlayerController extends InputAdapter{
 	
 	private Actor player;
-	public boolean up, down, left, right, newScreen;
+	public boolean up, down, left, right, newScreen,attack;
 	
 	public PlayerController(Actor p) {
 		this.player = p;
@@ -33,6 +33,9 @@ public class PlayerController extends InputAdapter{
 		if(keycode == Keys.RIGHT) {
 			right = true;
 		}
+		if(keycode==Keys.SPACE) {
+			attack=true;
+		}
 		return false;
 	}
 	
@@ -53,6 +56,9 @@ public class PlayerController extends InputAdapter{
 		}
 		if(keycode == Keys.RIGHT) {
 			right = false;
+		}
+		if(keycode == Keys.SPACE) {
+			attack = false;
 		}
 		return false;
 	}
