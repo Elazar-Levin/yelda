@@ -146,29 +146,29 @@ player1_walk_west
   index: 3
 player1_fight_south
   rotate: false
-  xy: 0, 128
-  size: 32, 32
+  xy: 8, 128
+  size: 16, 32
   orig: 32, 32
   offset: 0, 0
   index: 0
 player1_fight_south
   rotate: false
-  xy: 32, 128
-  size: 32, 32
+  xy: 40, 128
+  size: 16, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
 player1_fight_south
   rotate: false
-  xy: 64, 128
-  size: 32, 32
+  xy: 72, 128
+  size: 16, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
 player1_fight_south
   rotate: false
-  xy: 96, 128
-  size: 32, 32
+  xy: 104, 128
+  size: 16, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
