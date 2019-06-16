@@ -54,7 +54,7 @@ public class Actor {
 				walkTimer -= leftOverTime;
 				finishMove();
 				if(moveRequestThisFrame) {
-					if (move(facing)) {
+					if (move(facing)) {//TODO: make it so that the red background doesn't show, when he reaches a certain point, his actual coords change.
 						animTimer += leftOverTime;
 						worldX = Interpolation.linear.apply(srcX, destX, animTimer / ANIM_TIME);
 						worldY = Interpolation.linear.apply(srcY, destY, animTimer / ANIM_TIME);

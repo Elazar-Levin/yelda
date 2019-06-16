@@ -171,4 +171,88 @@ player1_fight_south
   size: 16, 32
   orig: 32, 32
   offset: 0, 0
+  index: 3
+player1_fight_north
+  rotate: false
+  xy: 8, 160
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 0
+player1_fight_north
+  rotate: false
+  xy: 40, 160
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+player1_fight_north
+  rotate: false
+  xy: 72, 160
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
   index: 2
+player1_fight_north
+  rotate: false
+  xy: 104, 160
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 3
+player1_fight_east
+  rotate: false
+  xy: 8, 192
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 0
+player1_fight_east
+  rotate: false
+  xy: 40, 192
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+player1_fight_east
+  rotate: false
+  xy: 72, 192
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2
+player1_fight_east
+  rotate: false
+  xy: 104, 192
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 3
+player1_fight_west
+  rotate: false
+  xy: 8, 224
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 0
+player1_fight_west
+  rotate: false
+  xy: 40, 224
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+player1_fight_west
+  rotate: false
+  xy: 72, 224
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2
+player1_fight_west
+  rotate: false
+  xy: 104, 224
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 3
