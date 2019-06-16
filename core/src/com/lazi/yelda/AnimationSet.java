@@ -3,8 +3,6 @@ package com.lazi.yelda;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-import src.witsiemon.model.DIRECTION;
-
 import java.util.HashMap;
 import java.util.Map;
 

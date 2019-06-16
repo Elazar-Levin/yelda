@@ -18,3 +18,10 @@ single_lily
   orig: 16, 16
   offset: 0, 0
   index: 1
+basic_water
+  rotate: false
+  xy: 48, 112
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
