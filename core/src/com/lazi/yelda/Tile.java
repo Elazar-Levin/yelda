@@ -30,4 +30,8 @@ public class Tile {
 	{
 		animated=b;
 	}
+	public void attack()
+	{
+		//TODO: check if this tile can be attacked, if it can, subtract a certain amount of life from it
+	}
 }
