@@ -18,6 +18,7 @@ public class Actor {
 	private float ANIM_TIME = 0.25f;
 	
 	private float walkTimer;
+	private float fightTimer;
 	private boolean moveRequestThisFrame;
 	
 	private ACTOR_STATE state;
@@ -44,6 +45,7 @@ public class Actor {
 	}
 	
 	public void update(float delta) {
+		
 		if(state == ACTOR_STATE.WALKING) {
 			animTimer += delta;
 			walkTimer += delta;
@@ -63,6 +65,10 @@ public class Actor {
 					walkTimer = 0f;
 				}
 			}
+		}
+		else if(state==ACTOR_STATE.FIGHTING)
+		{
+			fightTimer+=delta;
 		}
 		moveRequestThisFrame = false;
 	}
@@ -112,13 +118,14 @@ public class Actor {
 	public TextureRegion getSprite() {
 		if(state == ACTOR_STATE.WALKING) {
 			return (TextureRegion) animations.getWalking(facing).getKeyFrame(walkTimer);
-		} else if(state == ACTOR_STATE.STANDING) {
+		}
+		else if(state == ACTOR_STATE.STANDING) {
 			return animations.getStanding(facing);
 		}
-	//	else if(state==ACTOR_STATE.FIGHTING)
-	//	{
-	//		return animations.getFighting.getKeyFrame()
-	//	}
+		else if(state==ACTOR_STATE.FIGHTING)
+		{
+			return (TextureRegion)animations.getFighting(facing).getKeyFrame(fightTimer);
+		}
 		return animations.getStanding(DIRECTION.SOUTH);
 	}
 	
@@ -131,12 +138,20 @@ public class Actor {
 		this.destX = 0;
 		this.destY = 0;
 	}
-	
+	public void attack(DIRECTION dir)
+	{
+		//TODO: do attack method
+		state=ACTOR_STATE.FIGHTING;
+	}
 	public int getX() {
 		return x;
 	}
 	
 	public int getY() {
 		return y;
+	}
+	public DIRECTION getFacing()
+	{
+		return facing;
 	}
 }
