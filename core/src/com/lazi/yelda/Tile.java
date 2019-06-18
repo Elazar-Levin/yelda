@@ -30,8 +30,12 @@ public class Tile {
 	{
 		animated=b;
 	}
-	public void attack()
+	public void hit()
 	{
 		//TODO: check if this tile can be attacked, if it can, subtract a certain amount of life from it
+	}
+	public void attack()
+	{
+		//if this tile can attack, call its attack method
 	}
 }

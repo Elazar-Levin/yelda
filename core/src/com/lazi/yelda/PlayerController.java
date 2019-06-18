@@ -66,30 +66,31 @@ public class PlayerController extends InputAdapter{
 	
 	public void update(float delta) 
 	{
-		DIRECTION dir;
-		if(up) {
-			player.move(DIRECTION.NORTH);
-			dir=DIRECTION.NORTH;
-		}
-		
-		if(down) {
-			player.move(DIRECTION.SOUTH);
-			dir=DIRECTION.SOUTH;
-		}
-		
-		if(left) {
-			player.move(DIRECTION.WEST);
-			dir=DIRECTION.WEST;
-		}
-		
-		if(right) {
-			player.move(DIRECTION.EAST);
-			dir=DIRECTION.EAST;	
-		}
-		if(attack)
+		if(!player.isAttacking())
 		{
-			player.attack(player.getFacing());
+			if(up) {
+				player.move(DIRECTION.NORTH);
+			
+			}
+			
+			if(down) {
+				player.move(DIRECTION.SOUTH);
+				
+			}
+			
+			if(left) {
+				player.move(DIRECTION.WEST);
+			
+			}
+			
+			if(right) {
+				player.move(DIRECTION.EAST);
+				
+			}
+			if(attack)
+			{
+				player.attack(player.getFacing());
+			}
 		}
-		
 	}
 }

@@ -20,7 +20,7 @@ public class Actor {
 	private float walkTimer;
 	private float fightTimer;
 	private boolean moveRequestThisFrame;
-	
+	private int attackingStage=4;
 	private ACTOR_STATE state;
 	
 	private AnimationSet animations;
@@ -45,30 +45,33 @@ public class Actor {
 	}
 	
 	public void update(float delta) {
-		
-		if(state == ACTOR_STATE.WALKING) {
-			animTimer += delta;
-			walkTimer += delta;
-			worldX = Interpolation.linear.apply(srcX, destX, animTimer/ANIM_TIME);
-			worldY = Interpolation.linear.apply(srcY, destY, animTimer/ANIM_TIME);
-			if(animTimer > ANIM_TIME) {
-				float leftOverTime = animTimer-ANIM_TIME;
-				walkTimer -= leftOverTime;
-				finishMove();
-				if(moveRequestThisFrame) {
-					if (move(facing)) {//TODO: make it so that the red background doesn't show, when he reaches a certain point, his actual coords change.
-						animTimer += leftOverTime;
-						worldX = Interpolation.linear.apply(srcX, destX, animTimer / ANIM_TIME);
-						worldY = Interpolation.linear.apply(srcY, destY, animTimer / ANIM_TIME);
+		if(attackingStage>=4)
+		{
+			if(state == ACTOR_STATE.WALKING) {
+				animTimer += delta;
+				walkTimer += delta;
+				worldX = Interpolation.linear.apply(srcX, destX, animTimer/ANIM_TIME);
+				worldY = Interpolation.linear.apply(srcY, destY, animTimer/ANIM_TIME);
+				if(animTimer > ANIM_TIME) {
+					float leftOverTime = animTimer-ANIM_TIME;
+					walkTimer -= leftOverTime;
+					finishMove();
+					if(moveRequestThisFrame) {
+						if (move(facing)) {//TODO: make it so that the red background doesn't show, when he reaches a certain point, his actual coords change.
+							animTimer += leftOverTime;
+							worldX = Interpolation.linear.apply(srcX, destX, animTimer / ANIM_TIME);
+							worldY = Interpolation.linear.apply(srcY, destY, animTimer / ANIM_TIME);
+						}
+					}else {
+						walkTimer = 0f;
 					}
-				}else {
-					walkTimer = 0f;
 				}
 			}
 		}
-		else if(state==ACTOR_STATE.FIGHTING)
+		else
 		{
 			fightTimer+=delta;
+			state=ACTOR_STATE.FIGHTING;
 		}
 		moveRequestThisFrame = false;
 	}
@@ -124,6 +127,19 @@ public class Actor {
 		}
 		else if(state==ACTOR_STATE.FIGHTING)
 		{
+			//increment attackingStage here
+			if(attackingStage==3)
+			{
+				attackingStage=4;
+				float hold=fightTimer;
+				fightTimer=0;
+				state=ACTOR_STATE.STANDING;
+				return (TextureRegion)animations.getFighting(facing).getKeyFrame(hold);
+			}
+			else
+			{
+				attackingStage=animations.getFighting(facing).getKeyFrameIndex(fightTimer);
+			}
 			return (TextureRegion)animations.getFighting(facing).getKeyFrame(fightTimer);
 		}
 		return animations.getStanding(DIRECTION.SOUTH);
@@ -142,6 +158,29 @@ public class Actor {
 	{
 		//TODO: do attack method
 		state=ACTOR_STATE.FIGHTING;
+		attackingStage=0;
+		//TODO:make sure character only tries to attack valid tiles, ie no red background.also, (0,0) throws an errror for some reason 
+		if(dir==DIRECTION.NORTH)//attacking mehod for now. migt make enemies an insance of the actor class, in which case this will be very different
+		{
+			map.getTile(x+1, y).hit();
+			System.out.println(x+" "+y+" "+(x+1)+" "+y);
+		}
+		else if(dir==DIRECTION.SOUTH)
+		{
+			map.getTile(x-1, y).hit();
+			System.out.println(x+" "+y+" "+(x-1)+" "+y);
+		} 
+		else if(dir==DIRECTION.EAST)
+		{
+			map.getTile(x, y+1).hit();
+			System.out.println(x+" "+y+" "+(x)+" "+(y+1));
+		}
+		else if(dir==DIRECTION.WEST)
+		{
+			map.getTile(x, y-1).hit();
+			System.out.println(x+" "+y+" "+(x)+" "+(y-1));
+		}
+		
 	}
 	public int getX() {
 		return x;
@@ -153,5 +192,9 @@ public class Actor {
 	public DIRECTION getFacing()
 	{
 		return facing;
+	}
+	public boolean isAttacking()
+	{
+		return state==ACTOR_STATE.FIGHTING;
 	}
 }
