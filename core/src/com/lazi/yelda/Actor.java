@@ -1,5 +1,6 @@
 package com.lazi.yelda;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Interpolation;
 
@@ -89,6 +90,10 @@ public class Actor {
 			return false;	
 		}
 		if(map.getTile(x+dir.getDx(), y+dir.getDy()).getActor() != null) {
+			return false;
+		}
+		if(y-((Gdx.graphics.getHeight()/2)+16)>=0)
+		{
 			return false;
 		}
 		//TODO: make clause for colissions eg water, walls etc

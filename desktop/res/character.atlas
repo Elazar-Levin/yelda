@@ -277,3 +277,24 @@ player1_idle_north
   orig: 32, 32
   offset: 0, 0
   index: 2
+player1_idle_south
+  rotate: false
+  xy: 80, 0
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 0
+player1_idle_south
+  rotate: false
+  xy: 96, 0
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+player1_idle_south
+  rotate: false
+  xy: 112, 0
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2

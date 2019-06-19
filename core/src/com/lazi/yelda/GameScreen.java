@@ -43,13 +43,14 @@ public class GameScreen extends AbstractScreen {
 		
 		batch = new SpriteBatch();
 		
-		TextureAtlas atlas = app.getAssetManager().get("res/character.atlas", TextureAtlas.class);//TODO: make character atlas
+		TextureAtlas atlas = app.getAssetManager().get("res/character.atlas", TextureAtlas.class);
 		Array<AtlasRegion> tr=atlas.findRegions("player1_fight_east");
 		for(int i=0;i<4;i++)
 		{
 			tr.get(i).flip(true, false);
-		}
 			
+		}
+		
 		//TextureAtlas atlas= new TextureAtlas("res/character.atlas");
 		AnimationSet animations = new AnimationSet(
 			new Animation(0.3f/2f, atlas.findRegions("player1_walk_north"), PlayMode.LOOP_PINGPONG),
