@@ -256,3 +256,24 @@ player1_fight_west
   orig: 32, 32
   offset: 0, 0
   index: 3
+player1_idle_north
+  rotate: false
+  xy: 80, 64
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 0
+player1_idle_north
+  rotate: false
+  xy: 96, 64
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+player1_idle_north
+  rotate: false
+  xy: 112, 64
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2

@@ -25,6 +25,7 @@ public class Actor {
 	
 	private AnimationSet animations;
 	
+	private int lives;
 	public Actor(TileMap map, int x, int y, AnimationSet animations) {
 		this.map = map;
 		this.x = x;
@@ -40,7 +41,8 @@ public class Actor {
 	public enum ACTOR_STATE {
 		WALKING,
 		STANDING,
-		FIGHTING
+		FIGHTING,
+		IDLE
 		;
 	}
 	
@@ -145,7 +147,8 @@ public class Actor {
 		return animations.getStanding(DIRECTION.SOUTH);
 	}
 	
-	private void finishMove() {
+	private void finishMove() 
+	{
 		state = ACTOR_STATE.STANDING;
 		this.worldX = destX;
 		this.worldY = destY;
@@ -163,22 +166,22 @@ public class Actor {
 		if(dir==DIRECTION.NORTH)//attacking mehod for now. migt make enemies an insance of the actor class, in which case this will be very different
 		{
 			map.getTile(x+1, y).hit();
-			System.out.println(x+" "+y+" "+(x+1)+" "+y);
+		
 		}
 		else if(dir==DIRECTION.SOUTH)
 		{
 			map.getTile(x-1, y).hit();
-			System.out.println(x+" "+y+" "+(x-1)+" "+y);
+	
 		} 
 		else if(dir==DIRECTION.EAST)
 		{
 			map.getTile(x, y+1).hit();
-			System.out.println(x+" "+y+" "+(x)+" "+(y+1));
+		
 		}
 		else if(dir==DIRECTION.WEST)
 		{
 			map.getTile(x, y-1).hit();
-			System.out.println(x+" "+y+" "+(x)+" "+(y-1));
+			
 		}
 		
 	}

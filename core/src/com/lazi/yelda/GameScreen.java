@@ -8,7 +8,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.graphics.g2d.Animation;
 
 
@@ -40,8 +42,14 @@ public class GameScreen extends AbstractScreen {
 		grass = atlas1.findRegion("basic_grass");//TODO: update sprites
 		
 		batch = new SpriteBatch();
-		  
+		
 		TextureAtlas atlas = app.getAssetManager().get("res/character.atlas", TextureAtlas.class);//TODO: make character atlas
+		Array<AtlasRegion> tr=atlas.findRegions("player1_fight_east");
+		for(int i=0;i<4;i++)
+		{
+			tr.get(i).flip(true, false);
+		}
+			
 		//TextureAtlas atlas= new TextureAtlas("res/character.atlas");
 		AnimationSet animations = new AnimationSet(
 			new Animation(0.3f/2f, atlas.findRegions("player1_walk_north"), PlayMode.LOOP_PINGPONG),
@@ -55,7 +63,7 @@ public class GameScreen extends AbstractScreen {
 			new Animation(0.3f/2f, atlas.findRegions("player1_fight_north"), PlayMode.NORMAL),
 			new Animation(0.3f/2f, atlas.findRegions("player1_fight_south"), PlayMode.NORMAL),
 			new Animation(0.3f/2f, atlas.findRegions("player1_fight_east"), PlayMode.NORMAL),
-			new Animation(0.3f/2f, atlas.findRegions("player1_fight_west"), PlayMode.NORMAL)
+			new Animation(0.3f/2f, tr, PlayMode.NORMAL)
 		);
 		
 		map = new TileMap(1000, 1000);
