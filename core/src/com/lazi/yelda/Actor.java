@@ -26,7 +26,8 @@ public class Actor {
 	
 	private AnimationSet animations;
 	
-	private int lives;
+	private double lives;
+	private double damage;
 	public Actor(TileMap map, int x, int y, AnimationSet animations) {
 		this.map = map;
 		this.x = x;
@@ -37,6 +38,19 @@ public class Actor {
 		map.getTile(x, y).setActor(this);
 		this.state = ACTOR_STATE.STANDING;
 		this.facing = DIRECTION.SOUTH;
+	}
+	public Actor(TileMap map, int x, int y, AnimationSet animations,double lives,double damage) {
+		this.map = map;
+		this.x = x;
+		this.y = y;
+		this.worldX = x;
+		this.worldY = y;
+		this.animations = animations;
+		map.getTile(x, y).setActor(this);
+		this.state = ACTOR_STATE.STANDING;
+		this.facing = DIRECTION.SOUTH;
+		this.lives=lives;
+		this.damage=damage;
 	}
 	
 	public enum ACTOR_STATE {
@@ -92,10 +106,14 @@ public class Actor {
 		if(map.getTile(x+dir.getDx(), y+dir.getDy()).getActor() != null) {
 			return false;
 		}
-		if(y-((Gdx.graphics.getHeight()/2)+16)>=0)
+		if(ObjectArrays.walls.contains(map.getTile(x+dir.getDx(), y+dir.getDy()).getTerrain(), false))
 		{
 			return false;
 		}
+	//	if(y-((Gdx.graphics.getHeight()/2)+16)>=0)
+	//	{
+	//		return false;
+	//	}
 		//TODO: make clause for colissions eg water, walls etc
 		initializeMove(dir);
 		map.getTile(x, y).setActor(null);
@@ -162,33 +180,47 @@ public class Actor {
 		this.destX = 0;
 		this.destY = 0;
 	}
-	public void attack(DIRECTION dir)
+	public void attack()
 	{
 		//TODO: do attack method
 		state=ACTOR_STATE.FIGHTING;
 		attackingStage=0;
 		//TODO:make sure character only tries to attack valid tiles, ie no red background.also, (0,0) throws an errror for some reason 
-		if(dir==DIRECTION.NORTH)//attacking mehod for now. migt make enemies an insance of the actor class, in which case this will be very different
+		//attacking mehod for now. migt make enemies an insance of the actor class, in which case this will be very different
+		if(facing==DIRECTION.NORTH)
 		{
-			map.getTile(x+1, y).hit();
-		
+			if(y != map.getHeight()-1 && map.getTile(x, y+1).getActor()!=null )
+			{
+				map.getTile(x, y+1).getActor().hit(map.getTile(x, y+1).getActor().getDamage());
+			}
 		}
-		else if(dir==DIRECTION.SOUTH)
+		if(facing==DIRECTION.SOUTH)
 		{
-			map.getTile(x-1, y).hit();
-	
-		} 
-		else if(dir==DIRECTION.EAST)
-		{
-			map.getTile(x, y+1).hit();
-		
+			if(y!=0 && map.getTile(x, y-1).getActor()!=null )
+			{
+				map.getTile(x, y-1).getActor().hit(map.getTile(x, y-1).getActor().getDamage());
+			}
 		}
-		else if(dir==DIRECTION.WEST)
+		if(facing==DIRECTION.EAST)
 		{
-			map.getTile(x, y-1).hit();
-			
+			if(x != map.getWidth()-1 && map.getTile(x+1, y).getActor()!=null )
+			{
+				map.getTile(x+1, y).getActor().hit(map.getTile(x+1, y).getActor().getDamage());
+			}
+		}
+		if(facing==DIRECTION.WEST)
+		{
+			if(x != 0 && map.getTile(x-1, y).getActor()!=null )
+			{
+				map.getTile(x-1, y).getActor().hit(map.getTile(x-1, y).getActor().getDamage());
+			}
 		}
 		
+	}
+	public void hit(double damage)
+	{
+		lives-=damage;
+		//maybe do animation or flashing or something
 	}
 	public int getX() {
 		return x;
@@ -204,5 +236,9 @@ public class Actor {
 	public boolean isAttacking()
 	{
 		return state==ACTOR_STATE.FIGHTING;
+	}
+	public double getDamage()
+	{
+		return damage;
 	}
 }

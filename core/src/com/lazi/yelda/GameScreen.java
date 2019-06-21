@@ -28,12 +28,14 @@ public class GameScreen extends AbstractScreen {
 	private Main appp;
 	
 
-
+	
+	
 	public GameScreen(Main app) {
 		super(app);
 		this.appp = app;
-		
-		
+		ObjectArrays.initiate();
+		populateWalls();
+		populateAnimated();
 		//standingSouth = new Texture("res/player1_front.png");//TODO: update sprites
 		
 		
@@ -64,7 +66,11 @@ public class GameScreen extends AbstractScreen {
 			new Animation(0.3f/2f, atlas.findRegions("player1_fight_north"), PlayMode.NORMAL),
 			new Animation(0.3f/2f, atlas.findRegions("player1_fight_south"), PlayMode.NORMAL),
 			new Animation(0.3f/2f, atlas.findRegions("player1_fight_east"), PlayMode.NORMAL),
-			new Animation(0.3f/2f, tr, PlayMode.NORMAL)
+			new Animation(0.3f/2f, tr, PlayMode.NORMAL),
+			new Animation(1,atlas.findRegions("player1_idle_north"),PlayMode.LOOP_PINGPONG),
+			new Animation(1,atlas.findRegions("player1_idle_south"),PlayMode.LOOP_PINGPONG),
+			new Animation(1,atlas.findRegions("player1_idle_east"),PlayMode.LOOP_PINGPONG),
+			new Animation(1,atlas.findRegions("player1_idle_west"),PlayMode.LOOP_PINGPONG)
 		);
 		
 		map = new TileMap(1000, 1000);
@@ -135,7 +141,7 @@ public class GameScreen extends AbstractScreen {
 				}else if(map.getTile(x, y).getTerrain() == TERRAIN.MAIN_WATER) {
 					render = water;
 				}
-				else if(map.getTile(x, y).getTerrain() == TERRAIN.WATERFOUNTAIN_1)
+				else if(ObjectArrays.animated.contains(map.getTile(x, y).getTerrain(),false))
 				{
 					map.getTile(x, y).setAnimated(true);
 				}
@@ -175,5 +181,16 @@ public class GameScreen extends AbstractScreen {
 		Gdx.input.setInputProcessor(controller);
 		
 	}
-
+	private void populateWalls()
+	{
+		ObjectArrays.walls.add(TERRAIN.WATERFOUNTAIN_1);
+	}
+	private void populateAnimated()
+	{
+		ObjectArrays.animated.add(TERRAIN.WATERFOUNTAIN_1);
+	}
+	private boolean isWall(TERRAIN T)
+	{
+		return ObjectArrays.walls.contains(T, false);
+	}
 }

@@ -298,3 +298,45 @@ player1_idle_south
   orig: 32, 32
   offset: 0, 0
   index: 2
+player1_idle_east
+  rotate: false
+  xy: 0, 32
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 0
+player1_idle_east
+  rotate: false
+  xy: 96, 32
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+player1_idle_east
+  rotate: false
+  xy: 112, 32
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2
+player1_idle_west
+  rotate: false
+  xy: 0, 96
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 0
+player1_idle_west
+  rotate: false
+  xy: 96, 96
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+player1_idle_west
+  rotate: false
+  xy: 112, 96
+  size: 16, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2

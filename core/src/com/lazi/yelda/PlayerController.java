@@ -89,7 +89,7 @@ public class PlayerController extends InputAdapter{
 			}
 			if(attack)
 			{
-				player.attack(player.getFacing());
+				player.attack();
 			}
 		}
 	}

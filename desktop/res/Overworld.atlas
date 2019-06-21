@@ -17,8 +17,15 @@ single_lily
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
-  index: 1
+  index: -1
 basic_water
+  rotate: false
+  xy: 48, 112
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+water_fountain_1
   rotate: false
   xy: 48, 112
   size: 16, 16

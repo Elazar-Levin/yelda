@@ -19,6 +19,7 @@ public class TileMap {
 				}
 			}
 		}
+		tiles[30][30]=new Tile(TERRAIN.WATERFOUNTAIN_1);
 	}
 	
 	public Tile getTile(int x, int y) {

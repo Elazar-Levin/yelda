@@ -11,6 +11,7 @@ public class AnimationSet {
 	private Map<DIRECTION, Animation> walking;
 	private Map<DIRECTION, TextureRegion> standing;
 	private Map<DIRECTION, Animation> fighting;
+	private Map<DIRECTION, Animation> idle;
 	
 	public AnimationSet(Animation walkNorth, 
 			Animation walkSouth, 
@@ -23,7 +24,11 @@ public class AnimationSet {
 			Animation fightNorth,
 			Animation fightSouth,
 			Animation fightEast,
-			Animation fightWest) {
+			Animation fightWest,
+			Animation idleNorth,
+			Animation idleSouth,
+			Animation idleEast,
+			Animation idleWest) {
 		walking = new HashMap<DIRECTION, Animation>();
 		walking.put(DIRECTION.NORTH,walkNorth);
 		walking.put(DIRECTION.SOUTH,walkSouth);
@@ -39,6 +44,11 @@ public class AnimationSet {
 		fighting.put(DIRECTION.SOUTH,fightSouth);
 		fighting.put(DIRECTION.EAST,fightEast);
 		fighting.put(DIRECTION.WEST,fightWest);
+		idle = new HashMap<DIRECTION,Animation>(); 
+		idle.put(DIRECTION.NORTH,idleNorth);
+		idle.put(DIRECTION.SOUTH,idleSouth);
+		idle.put(DIRECTION.EAST,idleEast);
+		idle.put(DIRECTION.WEST,idleWest);
 	}
 	
 	public Animation getWalking(DIRECTION dir) {
@@ -50,5 +60,8 @@ public class AnimationSet {
 	}
 	public Animation getFighting(DIRECTION dir) {
 		return fighting.get(dir);
+	}
+	public Animation getIdle(DIRECTION dir)	{
+		return idle.get(dir);
 	}
 }
