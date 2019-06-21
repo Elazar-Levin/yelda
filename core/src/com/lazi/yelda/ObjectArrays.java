@@ -10,11 +10,12 @@ public class ObjectArrays {
 	public static Array<TERRAIN> canGoBehind;
 	public static int[][] map;
 	
-	public static void initiate()
+	public static void initialise()
 	{
 		walls=new Array<TERRAIN>();
 		animated=new Array<TERRAIN>();
 		canGoBehind =new Array<TERRAIN>();
+		map=new int[500][500];
 	}
 	
 	

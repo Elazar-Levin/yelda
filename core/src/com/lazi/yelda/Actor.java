@@ -101,20 +101,23 @@ public class Actor {
 			return false;
 		}
 		if(x+dir.getDx() >= map.getWidth() || x+dir.getDx() < 0 || y+dir.getDy() >= map.getHeight() || y+dir.getDy() < 0) {
+			facing=dir;
 			return false;	
 		}
 		if(map.getTile(x+dir.getDx(), y+dir.getDy()).getActor() != null) {
+			facing=dir;
 			return false;
 		}
 		if(ObjectArrays.walls.contains(map.getTile(x+dir.getDx(), y+dir.getDy()).getTerrain(), false))
 		{
+			facing=dir;
 			return false;
 		}
 	//	if(y-((Gdx.graphics.getHeight()/2)+16)>=0)
 	//	{
 	//		return false;
 	//	}
-		//TODO: make clause for colissions eg water, walls etc
+		
 		initializeMove(dir);
 		map.getTile(x, y).setActor(null);
 		x += dir.getDx();
@@ -152,7 +155,7 @@ public class Actor {
 		}
 		else if(state==ACTOR_STATE.FIGHTING)
 		{
-			//increment attackingStage here
+			
 			if(attackingStage==3)
 			{
 				attackingStage=4;
@@ -235,7 +238,7 @@ public class Actor {
 	}
 	public boolean isAttacking()
 	{
-		return state==ACTOR_STATE.FIGHTING;
+		return state.equals(ACTOR_STATE.FIGHTING);
 	}
 	public double getDamage()
 	{

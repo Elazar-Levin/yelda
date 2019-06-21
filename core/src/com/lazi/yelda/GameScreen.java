@@ -33,7 +33,7 @@ public class GameScreen extends AbstractScreen {
 	public GameScreen(Main app) {
 		super(app);
 		this.appp = app;
-		ObjectArrays.initiate();
+		ObjectArrays.initialise();
 		populateWalls();
 		populateAnimated();
 		//standingSouth = new Texture("res/player1_front.png");//TODO: update sprites
@@ -73,7 +73,7 @@ public class GameScreen extends AbstractScreen {
 			new Animation(1,atlas.findRegions("player1_idle_west"),PlayMode.LOOP_PINGPONG)
 		);
 		
-		map = new TileMap(1000, 1000);
+		map = new TileMap(500,500);
 		player = new Actor(map, 20, 20, animations);
 		camera = new Camera();
 		controller = new PlayerController(player);
