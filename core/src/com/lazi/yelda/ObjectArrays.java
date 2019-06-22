@@ -22,9 +22,9 @@ public class ObjectArrays {
 	}
 	private static void addWalls()
 	{
-		walls.add(TERRAIN.WATERFOUNTAIN_1);
-		walls.add(TERRAIN.WATERFOUNTAIN_2);
-		walls.add(TERRAIN.WATERFOUNTAIN_3);
+		//walls.add(TERRAIN.WATERFOUNTAIN_1);
+		//walls.add(TERRAIN.WATERFOUNTAIN_2);
+		//walls.add(TERRAIN.WATERFOUNTAIN_3);
 		walls.add(TERRAIN.WATERFOUNTAIN_4);
 		walls.add(TERRAIN.WATERFOUNTAIN_5);
 		walls.add(TERRAIN.WATERFOUNTAIN_6);
@@ -50,7 +50,12 @@ public class ObjectArrays {
 		animated.add(TERRAIN.WATERFOUNTAIN_8_1);
 		animated.add(TERRAIN.WATERFOUNTAIN_9_1);
 	}
-	
+	private static void addCanGoBehind()
+	{
+		canGoBehind.add(TERRAIN.WATERFOUNTAIN_1);
+		canGoBehind.add(TERRAIN.WATERFOUNTAIN_2);
+		canGoBehind.add(TERRAIN.WATERFOUNTAIN_3);
+	}
 	
 	
 }

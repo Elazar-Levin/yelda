@@ -39,7 +39,7 @@ public class GameScreen extends AbstractScreen {
 	private TileMap map;
 	private Main appp;
 	private float animationTimer=0f;
-
+	private boolean goBehind=false;
 	
 	
 	public GameScreen(Main app) {
@@ -155,11 +155,13 @@ public class GameScreen extends AbstractScreen {
 		
 		float worldStarX = Gdx.graphics.getWidth()/2 - camera.getCameraX()*Settings.SCALED_TILE_SIZE;
 		float worldStarY = Gdx.graphics.getHeight()/2 - camera.getCameraY()*Settings.SCALED_TILE_SIZE;
+		int myX=0;
+		int myY=0;
 		for(int x = 0; x < map.getWidth();x++) {
 			for(int y = 0; y < map.getHeight(); y++) {
 				TextureRegion render = null;
 				Animation anim=null;
-				 
+				//TODO: might have to keep track of all neccesary attributes fot this specific tile, and then just draw the character and tgen the tile when the tile should go in front				
 				if(map.getTile(x, y).getTerrain() == TERRAIN.MAIN_GRASS) {//TODO:put in all values
 					render = grass;
 				}else if(map.getTile(x, y).getTerrain() == TERRAIN.MAIN_WATER) {
@@ -271,7 +273,10 @@ public class GameScreen extends AbstractScreen {
 				
 			}
 		}
-		
+		//if()
+		//{
+			
+	//	}
 		batch.draw(player.getSprite(), 
 				worldStarX+player.getWorldX()*Settings.SCALED_TILE_SIZE, 
 				worldStarY+player.getWorldY()*Settings.SCALED_TILE_SIZE, 
