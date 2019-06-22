@@ -18,7 +18,7 @@ public class ObjectArrays {
 		map=new int[500][500];
 		addWalls();
 		addAnimated();
-		
+		addCanGoBehind();
 	}
 	private static void addWalls()
 	{

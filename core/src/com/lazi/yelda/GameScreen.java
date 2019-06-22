@@ -46,7 +46,7 @@ public class GameScreen extends AbstractScreen {
 		super(app);
 		this.appp = app;
 		ObjectArrays.initialise();
-		
+		TerrainHandler TerrainHandler= new TerrainHandler(app);
 		//standingSouth = new Texture("res/player1_front.png");//TODO: update sprites
 		
 		
@@ -155,13 +155,12 @@ public class GameScreen extends AbstractScreen {
 		
 		float worldStarX = Gdx.graphics.getWidth()/2 - camera.getCameraX()*Settings.SCALED_TILE_SIZE;
 		float worldStarY = Gdx.graphics.getHeight()/2 - camera.getCameraY()*Settings.SCALED_TILE_SIZE;
-		int myX=0;
-		int myY=0;
+		
 		for(int x = 0; x < map.getWidth();x++) {
 			for(int y = 0; y < map.getHeight(); y++) {
 				TextureRegion render = null;
 				Animation anim=null;
-				//TODO: might have to keep track of all neccesary attributes fot this specific tile, and then just draw the character and tgen the tile when the tile should go in front				
+								
 				if(map.getTile(x, y).getTerrain() == TERRAIN.MAIN_GRASS) {//TODO:put in all values
 					render = grass;
 				}else if(map.getTile(x, y).getTerrain() == TERRAIN.MAIN_WATER) {
@@ -273,15 +272,55 @@ public class GameScreen extends AbstractScreen {
 				
 			}
 		}
-		//if()
-		//{
-			
-	//	}
+		Array<FancyTile> tileArray=new Array();//array holding the 9 squares around and including the character
+		
+		//add values to tileArray
+		tileArray.add(new FancyTile(map,player.getX()-1,player.getY()-1));
+		tileArray.add(new FancyTile(map,player.getX()-1,player.getY()));
+		tileArray.add(new FancyTile(map,player.getX()-1,player.getY()+1));
+		tileArray.add(new FancyTile(map,player.getX(),player.getY()-1));
+		tileArray.add(new FancyTile(map,player.getX(),player.getY()));
+		tileArray.add(new FancyTile(map,player.getX(),player.getY()+1));
+		tileArray.add(new FancyTile(map,player.getX()+1,player.getY()-1));
+		tileArray.add(new FancyTile(map,player.getX()+1,player.getY()));
+		tileArray.add(new FancyTile(map,player.getX()+1,player.getY()+1));
+		
+		
 		batch.draw(player.getSprite(), 
 				worldStarX+player.getWorldX()*Settings.SCALED_TILE_SIZE, 
 				worldStarY+player.getWorldY()*Settings.SCALED_TILE_SIZE, 
 				Settings.SCALED_TILE_SIZE, 
 				Settings.SCALED_TILE_SIZE*1.5f);
+		
+		for(int i=0;i<9;i++)
+		{
+			
+			if(ObjectArrays.canGoBehind.contains(tileArray.get(i).getTile().getTerrain(),false))//if this tile must must be rendered in front of the player
+			{
+				if(tileArray.get(i).getTile().isAnimated())
+				{
+			
+					batch.draw(TerrainHandler.getTextureRegion(tileArray.get(i).getTile().getTerrain(), animationTimer),
+							worldStarX+tileArray.get(i).getX()*Settings.SCALED_TILE_SIZE,
+							worldStarY+tileArray.get(i).getY()*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE,
+							Settings.SCALED_TILE_SIZE);
+					
+				}
+				else
+				{
+					batch.draw(TerrainHandler.getTextureRegion(tileArray.get(i).getTile().getTerrain()),
+							worldStarX+tileArray.get(i).getX()*Settings.SCALED_TILE_SIZE,
+							worldStarY+tileArray.get(i).getY()*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE,
+							Settings.SCALED_TILE_SIZE);
+				}
+				
+				
+				
+			}
+		}
+		
+		
+		
 		batch.end();
 	}
 

@@ -24,6 +24,8 @@ public class Main extends Game {
 		assetManager = new AssetManager();
 		assetManager.load(("res/character.atlas"), TextureAtlas.class);
 		assetManager.finishLoading();
+		assetManager.load(("res/Overworld.atlas"), TextureAtlas.class);
+		assetManager.finishLoading();
 	
 		atlas = new TextureAtlas("res/Overworld.atlas");
 		screen = new GameScreen(this);
