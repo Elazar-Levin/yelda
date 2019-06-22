@@ -20,6 +20,8 @@ public class Actor {
 	private int idleCount=0;
 	private float idleTimer;
 	
+	private final int IDLE_THRESHHOLD=3600;
+	
 	private float walkTimer;
 	private float fightTimer;
 	private boolean moveRequestThisFrame;
@@ -91,7 +93,7 @@ public class Actor {
 				idleTimer+=delta;
 			}
 		}
-		else//TODO: add delta to idleTimer
+		else
 		{
 			fightTimer+=delta;
 			state=ACTOR_STATE.FIGHTING;
@@ -159,7 +161,7 @@ public class Actor {
 		}
 		else if(state == ACTOR_STATE.STANDING || state== ACTOR_STATE.IDLE) {
 			idleCount++;
-			if(idleCount>=360)
+			if(idleCount>=IDLE_THRESHHOLD)
 			{
 				state=ACTOR_STATE.IDLE;
 				return (TextureRegion)animations.getIdle(facing).getKeyFrame(idleTimer);

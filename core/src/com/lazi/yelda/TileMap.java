@@ -20,6 +20,11 @@ public class TileMap {
 			}
 		}
 		tiles[30][30]=new Tile(TERRAIN.WATERFOUNTAIN_1);
+		tiles[31][30]=new Tile(TERRAIN.WATERFOUNTAIN_2);
+		tiles[32][30]=new Tile(TERRAIN.WATERFOUNTAIN_3);
+		tiles[30][29]=new Tile(TERRAIN.WATERFOUNTAIN_4);
+		tiles[31][29]=new Tile(TERRAIN.WATERFOUNTAIN_5);
+		tiles[32][29]=new Tile(TERRAIN.WATERFOUNTAIN_6);
 	}
 	
 	public Tile getTile(int x, int y) {

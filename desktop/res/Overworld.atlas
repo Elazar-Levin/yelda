@@ -27,8 +27,127 @@ basic_water
   index: -1
 water_fountain_1
   rotate: false
-  xy: 48, 112
+  xy: 352, 144
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
-  index: -1
+  index: 0
+water_fountain_1
+  rotate: false
+  xy: 400, 144
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+water_fountain_1
+  rotate: false
+  xy: 448, 144
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+water_fountain_2
+  rotate: false
+  xy: 368, 144
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 0
+water_fountain_2
+  rotate: false
+  xy: 416, 144
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+water_fountain_2
+  rotate: false
+  xy: 464, 144
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+water_fountain_3
+  rotate: false
+  xy: 384, 144
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 0
+water_fountain_3
+  rotate: false
+  xy: 432, 144
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+water_fountain_3
+  rotate: false
+  xy: 480, 144
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+water_fountain_4
+  rotate: false
+  xy: 352, 160
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 0
+water_fountain_4
+  rotate: false
+  xy: 400, 160
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+water_fountain_4
+  rotate: false
+  xy: 448, 160
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+water_fountain_5
+  rotate: false
+  xy: 368, 160
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 0
+water_fountain_5
+  rotate: false
+  xy: 416, 160
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+water_fountain_5
+  rotate: false
+  xy: 464, 160
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+water_fountain_6
+  rotate: false
+  xy: 384, 160
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 0
+water_fountain_6
+  rotate: false
+  xy: 432, 160
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+water_fountain_6
+  rotate: false
+  xy: 480, 160
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2

@@ -22,7 +22,7 @@ public class Main extends Game {
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
 		assetManager = new AssetManager();
-		assetManager.load("res/character.atlas", TextureAtlas.class);
+		assetManager.load(("res/character.atlas"), TextureAtlas.class);
 		assetManager.finishLoading();
 	
 		atlas = new TextureAtlas("res/Overworld.atlas");

@@ -12,7 +12,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.graphics.g2d.Animation;
-
+import com.badlogic.gdx.graphics.g2d.Animation;
 
 
 public class GameScreen extends AbstractScreen {
@@ -24,9 +24,15 @@ public class GameScreen extends AbstractScreen {
 	private Texture standingSouth;
 	private TextureRegion grass;
 	private TextureRegion water;
+	private Animation wf1; 
+	private Animation wf2; 
+	private Animation wf3; 
+	private Animation wf4; 
+	private Animation wf5; 
+	private Animation wf6; 
 	private TileMap map;
 	private Main appp;
-	
+	private float animationTimer=0f;
 
 	
 	
@@ -34,15 +40,20 @@ public class GameScreen extends AbstractScreen {
 		super(app);
 		this.appp = app;
 		ObjectArrays.initialise();
-		populateWalls();
-		populateAnimated();
+		
 		//standingSouth = new Texture("res/player1_front.png");//TODO: update sprites
 		
 		
-		TextureAtlas atlas1 = new TextureAtlas("res/Overworld.atlas");
+	
+		TextureAtlas atlas1 = new TextureAtlas(Gdx.files.internal("res/Overworld.atlas"));
 		water = atlas1.findRegion("basic_water");
 		grass = atlas1.findRegion("basic_grass");//TODO: update sprites
-		
+		wf1=new Animation(0.3f,atlas1.findRegions("water_fountain_1"),PlayMode.LOOP);
+		wf2=new Animation(0.3f,atlas1.findRegions("water_fountain_2"),PlayMode.LOOP);
+		wf3=new Animation(0.3f,atlas1.findRegions("water_fountain_3"),PlayMode.LOOP);
+		wf4=new Animation(0.3f,atlas1.findRegions("water_fountain_4"),PlayMode.LOOP);
+		wf5=new Animation(0.3f,atlas1.findRegions("water_fountain_5"),PlayMode.LOOP);
+		wf6=new Animation(0.3f,atlas1.findRegions("water_fountain_6"),PlayMode.LOOP);
 		batch = new SpriteBatch();
 		
 		TextureAtlas atlas = app.getAssetManager().get("res/character.atlas", TextureAtlas.class);
@@ -123,6 +134,7 @@ public class GameScreen extends AbstractScreen {
 			//	newScreen();
 			
 		//}
+		animationTimer+=delta;
 		controller.update(delta);
 		player.update(delta);
 		camera.update(player.getWorldX()+0.5f, player.getWorldY()+0.5f);
@@ -134,7 +146,7 @@ public class GameScreen extends AbstractScreen {
 		for(int x = 0; x < map.getWidth();x++) {
 			for(int y = 0; y < map.getHeight(); y++) {
 				TextureRegion render = null;
-				
+				Animation anim=null;
 				 
 				if(map.getTile(x, y).getTerrain() == TERRAIN.MAIN_GRASS) {//TODO:put in all values
 					render = grass;
@@ -147,12 +159,58 @@ public class GameScreen extends AbstractScreen {
 				}
 				if(map.getTile(x, y).isAnimated())
 				{
+					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_1)
+					{
+						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
+						anim=wf1;
+						render=(TextureRegion)anim.getKeyFrame(animationTimer);
+						
+					}
+					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_2)
+					{
+						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
+						
+						anim=wf2;
+						render=(TextureRegion)anim.getKeyFrame(animationTimer);
+						
+					}
+					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_3)
+					{
+						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
+						
+						anim=wf3;
+						render=(TextureRegion)anim.getKeyFrame(animationTimer);
+						
+					}
+					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_4)
+					{
+						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
+						anim=wf4;
+						render=(TextureRegion)anim.getKeyFrame(animationTimer);
+						
+					}
+					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_5)
+					{
+						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
+						
+						anim=wf5;
+						render=(TextureRegion)anim.getKeyFrame(animationTimer);
+						
+					}
+					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_6)
+					{
+						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
+						
+						anim=wf6;
+						render=(TextureRegion)anim.getKeyFrame(animationTimer);
+						
+					}
 					//do animated tilesets here
 				}
-				else 
-				{	
-					batch.draw(render,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
-				}
+				 
+				
+				batch.draw(render,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
+				
 			}
 		}
 		
@@ -181,16 +239,6 @@ public class GameScreen extends AbstractScreen {
 		Gdx.input.setInputProcessor(controller);
 		
 	}
-	private void populateWalls()
-	{
-		ObjectArrays.walls.add(TERRAIN.WATERFOUNTAIN_1);
-	}
-	private void populateAnimated()
-	{
-		ObjectArrays.animated.add(TERRAIN.WATERFOUNTAIN_1);
-	}
-	private boolean isWall(TERRAIN T)
-	{
-		return ObjectArrays.walls.contains(T, false);
-	}
+
+
 }
