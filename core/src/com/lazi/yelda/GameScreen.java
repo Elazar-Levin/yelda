@@ -159,112 +159,25 @@ public class GameScreen extends AbstractScreen {
 		for(int x = 0; x < map.getWidth();x++) {
 			for(int y = 0; y < map.getHeight(); y++) {
 				TextureRegion render = null;
-				Animation anim=null;
-								
-				if(map.getTile(x, y).getTerrain() == TERRAIN.MAIN_GRASS) {//TODO:put in all values
-					render = grass;
-				}else if(map.getTile(x, y).getTerrain() == TERRAIN.MAIN_WATER) {
-					render = water;
+				
+				if(ObjectArrays.needsGrass.contains(map.getTile(x, y).getTerrain(),false))
+				{
+					batch.draw(TerrainHandler.getTextureRegion(TERRAIN.MAIN_GRASS),worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
 				}
-				else if(ObjectArrays.animated.contains(map.getTile(x, y).getTerrain(),false))
+				if(ObjectArrays.animated.contains(map.getTile(x, y).getTerrain(),false))
 				{
 					map.getTile(x, y).setAnimated(true);
 				}
-				if(map.getTile(x, y).isAnimated())
+				if(map.getTile(x, y).isAnimated())//tile is animated
 				{
-					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_1)
-					{
-						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
-						anim=wf1;
-						render=(TextureRegion)anim.getKeyFrame(animationTimer);
-						
-					}
-					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_2)
-					{
-						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
-						
-						anim=wf2;
-						render=(TextureRegion)anim.getKeyFrame(animationTimer);
-						
-					}
-					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_3)
-					{
-						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
-						
-						anim=wf3;
-						render=(TextureRegion)anim.getKeyFrame(animationTimer);
-						
-					}
-					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_4)
-					{
-						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
-						anim=wf4;
-						render=(TextureRegion)anim.getKeyFrame(animationTimer);
-						
-					}
-					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_5)
-					{
-						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
-						
-						anim=wf5;
-						render=(TextureRegion)anim.getKeyFrame(animationTimer);
-						
-					}
-					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_6)
-					{
-						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
-						
-						anim=wf6;
-						render=(TextureRegion)anim.getKeyFrame(animationTimer);
-						
-					}
-					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_7)
-					{
-						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
-						anim=wf7;
-						render=(TextureRegion)anim.getKeyFrame(animationTimer);
-						
-					}
-					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_8)
-					{
-						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
-						
-						anim=wf8;
-						render=(TextureRegion)anim.getKeyFrame(animationTimer);
-						
-					}
-					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_9)
-					{
-						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
-						
-						anim=wf9;
-						render=(TextureRegion)anim.getKeyFrame(animationTimer);
-						
-					}
-					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_7_1)
-					{
-						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
-						anim=wf7_1;
-						render=(TextureRegion)anim.getKeyFrame(animationTimer);
-						
-					}
-					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_8_1)
-					{
-						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
-						
-						anim=wf8_1;
-						render=(TextureRegion)anim.getKeyFrame(animationTimer);
-						
-					}
-					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_9_1)
-					{
-						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
-						
-						anim=wf9_1;
-						render=(TextureRegion)anim.getKeyFrame(animationTimer);
-						
-					}
 					//do animated tilesets here
+					render=TerrainHandler.getTextureRegion(map.getTile(x, y).getTerrain(), animationTimer);
+					
+					
+				}
+				else//tile isnt animated
+				{
+					render=TerrainHandler.getTextureRegion(map.getTile(x, y).getTerrain());
 				}
 				 
 				
