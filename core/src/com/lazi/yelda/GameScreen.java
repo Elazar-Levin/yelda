@@ -30,6 +30,12 @@ public class GameScreen extends AbstractScreen {
 	private Animation wf4; 
 	private Animation wf5; 
 	private Animation wf6; 
+	private Animation wf7; 
+	private Animation wf8; 
+	private Animation wf9; 
+	private Animation wf7_1; 
+	private Animation wf8_1; 
+	private Animation wf9_1; 
 	private TileMap map;
 	private Main appp;
 	private float animationTimer=0f;
@@ -45,7 +51,7 @@ public class GameScreen extends AbstractScreen {
 		
 		
 	
-		TextureAtlas atlas1 = new TextureAtlas(Gdx.files.internal("res/Overworld.atlas"));
+		TextureAtlas atlas1 = new TextureAtlas(Gdx.files.internal("res/Overworld.atlas"));//TODO: use the terrain handler class to take in a terrain, and optionally a delta, and return a texture region object. will neaten up code a lot
 		water = atlas1.findRegion("basic_water");
 		grass = atlas1.findRegion("basic_grass");//TODO: update sprites
 		wf1=new Animation(0.3f,atlas1.findRegions("water_fountain_1"),PlayMode.LOOP);
@@ -54,6 +60,12 @@ public class GameScreen extends AbstractScreen {
 		wf4=new Animation(0.3f,atlas1.findRegions("water_fountain_4"),PlayMode.LOOP);
 		wf5=new Animation(0.3f,atlas1.findRegions("water_fountain_5"),PlayMode.LOOP);
 		wf6=new Animation(0.3f,atlas1.findRegions("water_fountain_6"),PlayMode.LOOP);
+		wf7=new Animation(0.3f,atlas1.findRegions("water_fountain_7"),PlayMode.LOOP);
+		wf8=new Animation(0.3f,atlas1.findRegions("water_fountain_8"),PlayMode.LOOP);
+		wf9=new Animation(0.3f,atlas1.findRegions("water_fountain_9"),PlayMode.LOOP);
+		wf7_1=new Animation(0.3f,atlas1.findRegions("water_fountain_7_1"),PlayMode.LOOP);
+		wf8_1=new Animation(0.3f,atlas1.findRegions("water_fountain_8_1"),PlayMode.LOOP);
+		wf9_1=new Animation(0.3f,atlas1.findRegions("water_fountain_9_1"),PlayMode.LOOP);
 		batch = new SpriteBatch();
 		
 		TextureAtlas atlas = app.getAssetManager().get("res/character.atlas", TextureAtlas.class);
@@ -202,6 +214,52 @@ public class GameScreen extends AbstractScreen {
 						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
 						
 						anim=wf6;
+						render=(TextureRegion)anim.getKeyFrame(animationTimer);
+						
+					}
+					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_7)
+					{
+						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
+						anim=wf7;
+						render=(TextureRegion)anim.getKeyFrame(animationTimer);
+						
+					}
+					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_8)
+					{
+						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
+						
+						anim=wf8;
+						render=(TextureRegion)anim.getKeyFrame(animationTimer);
+						
+					}
+					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_9)
+					{
+						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
+						
+						anim=wf9;
+						render=(TextureRegion)anim.getKeyFrame(animationTimer);
+						
+					}
+					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_7_1)
+					{
+						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
+						anim=wf7_1;
+						render=(TextureRegion)anim.getKeyFrame(animationTimer);
+						
+					}
+					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_8_1)
+					{
+						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
+						
+						anim=wf8_1;
+						render=(TextureRegion)anim.getKeyFrame(animationTimer);
+						
+					}
+					if(map.getTile(x, y).getTerrain()==TERRAIN.WATERFOUNTAIN_9_1)
+					{
+						batch.draw(grass,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
+						
+						anim=wf9_1;
 						render=(TextureRegion)anim.getKeyFrame(animationTimer);
 						
 					}

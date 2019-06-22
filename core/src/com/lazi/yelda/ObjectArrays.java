@@ -28,6 +28,12 @@ public class ObjectArrays {
 		walls.add(TERRAIN.WATERFOUNTAIN_4);
 		walls.add(TERRAIN.WATERFOUNTAIN_5);
 		walls.add(TERRAIN.WATERFOUNTAIN_6);
+		walls.add(TERRAIN.WATERFOUNTAIN_7);
+		walls.add(TERRAIN.WATERFOUNTAIN_8);
+		walls.add(TERRAIN.WATERFOUNTAIN_9);
+		walls.add(TERRAIN.WATERFOUNTAIN_7_1);
+		walls.add(TERRAIN.WATERFOUNTAIN_8_1);
+		walls.add(TERRAIN.WATERFOUNTAIN_9_1);
 	}
 	private static void addAnimated()
 	{
@@ -37,6 +43,12 @@ public class ObjectArrays {
 		animated.add(TERRAIN.WATERFOUNTAIN_4);
 		animated.add(TERRAIN.WATERFOUNTAIN_5);
 		animated.add(TERRAIN.WATERFOUNTAIN_6);
+		animated.add(TERRAIN.WATERFOUNTAIN_7);
+		animated.add(TERRAIN.WATERFOUNTAIN_8);
+		animated.add(TERRAIN.WATERFOUNTAIN_9);
+		animated.add(TERRAIN.WATERFOUNTAIN_7_1);
+		animated.add(TERRAIN.WATERFOUNTAIN_8_1);
+		animated.add(TERRAIN.WATERFOUNTAIN_9_1);
 	}
 	
 	

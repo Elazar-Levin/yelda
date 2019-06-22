@@ -151,3 +151,129 @@ water_fountain_6
   orig: 16, 16
   offset: 0, 0
   index: 2
+water_fountain_7
+  rotate: false
+  xy: 352, 176
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 0
+water_fountain_7
+  rotate: false
+  xy: 400, 176
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+water_fountain_7
+  rotate: false
+  xy: 448, 176
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+water_fountain_8
+  rotate: false
+  xy: 368, 176
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 0
+water_fountain_8
+  rotate: false
+  xy: 416, 176
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+water_fountain_8
+  rotate: false
+  xy: 464, 176
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+water_fountain_9
+  rotate: false
+  xy: 384, 176
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 0
+water_fountain_9
+  rotate: false
+  xy: 432, 176
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+water_fountain_9
+  rotate: false
+  xy: 480, 176
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+water_fountain_7_1
+  rotate: false
+  xy: 496, 128
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 0
+water_fountain_7_1
+  rotate: false
+  xy: 496, 128
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+water_fountain_7_1
+  rotate: false
+  xy: 496, 128
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+water_fountain_8_1
+  rotate: false
+  xy: 512, 128
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 0
+water_fountain_8_1
+  rotate: false
+  xy: 512, 128
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+water_fountain_8_1
+  rotate: false
+  xy: 512, 128
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+water_fountain_9_1
+  rotate: false
+  xy: 528, 128
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 0
+water_fountain_9_1
+  rotate: false
+  xy: 528, 128
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+water_fountain_9_1
+  rotate: false
+  xy: 528, 128
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
