@@ -17,6 +17,8 @@ public class Actor {
 	private int destX, destY;
 	private float animTimer;
 	private float ANIM_TIME = 0.25f;
+	private int idleCount=0;
+	private float idleTimer;
 	
 	private float walkTimer;
 	private float fightTimer;
@@ -84,8 +86,12 @@ public class Actor {
 					}
 				}
 			}
+			else if(state==ACTOR_STATE.IDLE)
+			{
+				idleTimer+=delta;
+			}
 		}
-		else
+		else//TODO: add delta to idleTimer
 		{
 			fightTimer+=delta;
 			state=ACTOR_STATE.FIGHTING;
@@ -148,14 +154,21 @@ public class Actor {
 	
 	public TextureRegion getSprite() {
 		if(state == ACTOR_STATE.WALKING) {
+			idleCount=0;
 			return (TextureRegion) animations.getWalking(facing).getKeyFrame(walkTimer);
 		}
-		else if(state == ACTOR_STATE.STANDING) {
+		else if(state == ACTOR_STATE.STANDING || state== ACTOR_STATE.IDLE) {
+			idleCount++;
+			if(idleCount>=360)
+			{
+				state=ACTOR_STATE.IDLE;
+				return (TextureRegion)animations.getIdle(facing).getKeyFrame(idleTimer);
+			}
 			return animations.getStanding(facing);
 		}
 		else if(state==ACTOR_STATE.FIGHTING)
 		{
-			
+			idleCount=0;
 			if(attackingStage==3)
 			{
 				attackingStage=4;

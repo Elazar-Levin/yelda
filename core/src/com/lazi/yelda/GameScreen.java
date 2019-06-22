@@ -67,10 +67,10 @@ public class GameScreen extends AbstractScreen {
 			new Animation(0.3f/2f, atlas.findRegions("player1_fight_south"), PlayMode.NORMAL),
 			new Animation(0.3f/2f, atlas.findRegions("player1_fight_east"), PlayMode.NORMAL),
 			new Animation(0.3f/2f, tr, PlayMode.NORMAL),
-			new Animation(1,atlas.findRegions("player1_idle_north"),PlayMode.LOOP_PINGPONG),
-			new Animation(1,atlas.findRegions("player1_idle_south"),PlayMode.LOOP_PINGPONG),
-			new Animation(1,atlas.findRegions("player1_idle_east"),PlayMode.LOOP_PINGPONG),
-			new Animation(1,atlas.findRegions("player1_idle_west"),PlayMode.LOOP_PINGPONG)
+			new Animation(0.3f,atlas.findRegions("player1_idle_north"),PlayMode.LOOP_PINGPONG),
+			new Animation(0.3f,atlas.findRegions("player1_idle_south"),PlayMode.LOOP_PINGPONG),
+			new Animation(0.3f,atlas.findRegions("player1_idle_east"),PlayMode.LOOP_PINGPONG),
+			new Animation(0.3f,atlas.findRegions("player1_idle_west"),PlayMode.LOOP_PINGPONG)
 		);
 		
 		map = new TileMap(500,500);
