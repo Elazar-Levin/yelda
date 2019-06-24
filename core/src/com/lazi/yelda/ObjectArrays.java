@@ -3,6 +3,7 @@ package com.lazi.yelda;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,123 +11,94 @@ import java.util.Map;
 //10p10 number of squares around player, number of squares neccesary to render
 //  7
 public class ObjectArrays {
-	private static Array<TERRAIN> walls;
-	private static Array<TERRAIN> animated;
-	public static Array<TERRAIN> canGoBehind;
-	public static Array<TERRAIN> needsGrass;
+	private static Array<Integer> walls;
+	private static Array<Integer> animated;
+	public static Array<Integer> canGoBehind;
+	public static Array<Integer> needsGrass;
 	public static int[][] map;
 	public static int[][] background;
-	public static Map<Integer,TERRAIN> terrainMap;
+	public static Map<Integer,TextureRegion> Textures;
 	
 	
 	public static void initialise()
 	{
-		walls=new Array<TERRAIN>();
-		animated=new Array<TERRAIN>();
-		canGoBehind =new Array<TERRAIN>();
-		needsGrass =new Array<TERRAIN>();
+		walls=new Array<Integer>();
+		animated=new Array<Integer>();
+		canGoBehind =new Array<Integer>();
+		needsGrass =new Array<Integer>();
+		Textures=new HashMap<Integer,TextureRegion>();
 		map=new int[501][501];
 		background=new int[501][501];
-		terrainMap=new HashMap<Integer,TERRAIN>() ;
 		addWalls();
 		addAnimated();
 		addCanGoBehind();
 		addNeedsGrass();
-		addTerrainMap();
+		addTextures();
 		handleMap();
 	}
+	private static void addTextures()
+	{
+		
+	}
+	
 	private static void addWalls()
 	{
-		walls.add(TERRAIN.MAIN_WATER);
-		walls.add(TERRAIN.WATERFOUNTAIN_4);
-		walls.add(TERRAIN.WATERFOUNTAIN_5);
-		walls.add(TERRAIN.WATERFOUNTAIN_6);
-		//walls.add(TERRAIN.WATERFOUNTAIN_7);//not sure if these should be in or not
-		walls.add(TERRAIN.WATERFOUNTAIN_8);
-	//	walls.add(TERRAIN.WATERFOUNTAIN_9);//not sure if these should be in or not
-	//	walls.add(TERRAIN.WATERFOUNTAIN_7_1);//not sure if these should be in or not
-		walls.add(TERRAIN.WATERFOUNTAIN_8_1);
-	//	walls.add(TERRAIN.WATERFOUNTAIN_9_1);  //not sure if these should be in or not
-		walls.add(TERRAIN.WAVE);
-		walls.add(TERRAIN.BRIDGE_L_1);
-		walls.add(TERRAIN.BRIDGE_L_2);
-		walls.add(TERRAIN.BRIDGE_L_3);
-		walls.add(TERRAIN.BRIDGE_L_4);
-		walls.add(TERRAIN.BRIDGE_L_5);
-		walls.add(TERRAIN.BRIDGE_L_6);
-		walls.add(TERRAIN.BRIDGE_L_7);
+		walls.add(283);
+		walls.add(422);
+		walls.add(423);
+		walls.add(424);
+		//walls.add(462);//not sure if these should be in or not
+		walls.add(463);
+	//	walls.add(464);//not sure if these should be in or not
+	//	walls.add(351);//not sure if these should be in or not
+		walls.add(352);
+	//	walls.add(353);  //not sure if these should be in or not
+		walls.add(40);
+		walls.add(1139);
+		walls.add(1179);
+		walls.add(1219);
+		walls.add(1259);
+		walls.add(1299);
+		walls.add(1339);
+		walls.add(1379);
 		
 	}
 	private static void addAnimated()
 	{
-		animated.add(TERRAIN.WATERFOUNTAIN_1);
-		animated.add(TERRAIN.WATERFOUNTAIN_2);
-		animated.add(TERRAIN.WATERFOUNTAIN_3);
-		animated.add(TERRAIN.WATERFOUNTAIN_4);
-		animated.add(TERRAIN.WATERFOUNTAIN_5);
-		animated.add(TERRAIN.WATERFOUNTAIN_6);
-		animated.add(TERRAIN.WATERFOUNTAIN_7);
-		animated.add(TERRAIN.WATERFOUNTAIN_8);
-		animated.add(TERRAIN.WATERFOUNTAIN_9);
-		animated.add(TERRAIN.WATERFOUNTAIN_7_1);
-		animated.add(TERRAIN.WATERFOUNTAIN_8_1);
-		animated.add(TERRAIN.WATERFOUNTAIN_9_1);
-		animated.add(TERRAIN.WAVE);
+		animated.add(382);
+		animated.add(383);
+		animated.add(384);
+		animated.add(422);
+		animated.add(423);
+		animated.add(424);
+		animated.add(462);
+		animated.add(463);
+		animated.add(464);
+		animated.add(351);
+		animated.add(352);
+		animated.add(353);
+		animated.add(40);
 		
 	}
 	private static void addCanGoBehind()
 	{
-		canGoBehind.add(TERRAIN.WATERFOUNTAIN_1);
-		canGoBehind.add(TERRAIN.WATERFOUNTAIN_2);
-		canGoBehind.add(TERRAIN.WATERFOUNTAIN_3);
+		canGoBehind.add(382);
+		canGoBehind.add(383);
+		canGoBehind.add(384);
 	}
 	private static void addNeedsGrass()
 	{
-		needsGrass.add(TERRAIN.WATERFOUNTAIN_1);
-		needsGrass.add(TERRAIN.WATERFOUNTAIN_2);
-		needsGrass.add(TERRAIN.WATERFOUNTAIN_3);
-		needsGrass.add(TERRAIN.WATERFOUNTAIN_7);
-		needsGrass.add(TERRAIN.WATERFOUNTAIN_8);
-		needsGrass.add(TERRAIN.WATERFOUNTAIN_9);
-		needsGrass.add(TERRAIN.WATERFOUNTAIN_7_1);
-		needsGrass.add(TERRAIN.WATERFOUNTAIN_8_1);
-		needsGrass.add(TERRAIN.WATERFOUNTAIN_9_1);
+		needsGrass.add(382);
+		needsGrass.add(383);
+		needsGrass.add(384);
+		needsGrass.add(462);
+		needsGrass.add(463);
+		needsGrass.add(464);
+		needsGrass.add(351);
+		needsGrass.add(352);
+		needsGrass.add(353);
 	}
-	private static void addTerrainMap()
-	{
-		terrainMap.put(0,TERRAIN.MAIN_GRASS);
-		terrainMap.put(283,TERRAIN.MAIN_WATER);
-		terrainMap.put(382,TERRAIN.WATERFOUNTAIN_1);
-		terrainMap.put(383,TERRAIN.WATERFOUNTAIN_2);
-		terrainMap.put(384,TERRAIN.WATERFOUNTAIN_3);
-		terrainMap.put(422,TERRAIN.WATERFOUNTAIN_4);
-		terrainMap.put(423,TERRAIN.WATERFOUNTAIN_5);
-		terrainMap.put(424,TERRAIN.WATERFOUNTAIN_6);
-		terrainMap.put(462,TERRAIN.WATERFOUNTAIN_7);
-		terrainMap.put(463,TERRAIN.WATERFOUNTAIN_8);
-		terrainMap.put(464,TERRAIN.WATERFOUNTAIN_9);
-		terrainMap.put(351,TERRAIN.WATERFOUNTAIN_7_1);
-		terrainMap.put(352,TERRAIN.WATERFOUNTAIN_8_1);
-		terrainMap.put(353,TERRAIN.WATERFOUNTAIN_9_1);
-		terrainMap.put(243,TERRAIN.BANK_T);
-		terrainMap.put(284,TERRAIN.BANK_R);
-		terrainMap.put(282,TERRAIN.BANK_L);
-		terrainMap.put(323,TERRAIN.BANK_B);
-		terrainMap.put(242,TERRAIN.BANK_T_L);
-		terrainMap.put(244,TERRAIN.BANK_T_R);
-		terrainMap.put(322,TERRAIN.BANK_B_L);
-		terrainMap.put(324,TERRAIN.BANK_B_R);
-		terrainMap.put(40,TERRAIN.WAVE);
-		terrainMap.put(1139,TERRAIN.BRIDGE_L_1);
-		terrainMap.put(1179,TERRAIN.BRIDGE_L_2);
-		terrainMap.put(1219,TERRAIN.BRIDGE_L_3);
-		terrainMap.put(1259,TERRAIN.BRIDGE_L_4);
-		terrainMap.put(1299,TERRAIN.BRIDGE_L_5);
-		terrainMap.put(1339,TERRAIN.BRIDGE_L_6);
-		terrainMap.put(1379,TERRAIN.BRIDGE_L_7);
-		//TODO: GET RID OF TERRAINS
-		
-	}
+	
 	
 	private static void handleMap()
 	{
@@ -178,11 +150,11 @@ public class ObjectArrays {
 		
 		
 	}
-	public static boolean isAnimated(TERRAIN terrain)
+	public static boolean isAnimated(Integer terrain)
 	{
 		return animated.contains(terrain, false);
 	}
-	public static boolean isWall(TERRAIN terrain, int level)//TODO: possibly add another terrain for the background, so we can check the background too
+	public static boolean isWall(Integer terrain, int level)//TODO: possibly add another terrain for the background, so we can check the background too
 	{
 		if(walls.contains(terrain, false))
 		{
@@ -193,7 +165,7 @@ public class ObjectArrays {
 			return false;
 		}
 	}
-	public static boolean isWall(TERRAIN terrain, int level,int x,int y)//TODO: possibly add another terrain for the background, so we can check the background too
+	public static boolean isWall(Integer terrain, int level,int x,int y)//TODO: possibly add another terrain for the background, so we can check the background too
 	{
 		if(walls.contains(terrain, false))
 		{

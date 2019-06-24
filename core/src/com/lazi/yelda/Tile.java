@@ -2,16 +2,16 @@ package com.lazi.yelda;
 
 
 public class Tile {
-	private TERRAIN terrain;
+	private int terrain;
 	private Actor actor;
 	private boolean animated;
 	
-	public Tile(TERRAIN terrain) {
+	public Tile(int terrain) {
 		this.terrain = terrain;
 		animated=false;
 	}
 	
-	public TERRAIN getTerrain() {
+	public int getTerrain() {
 		return terrain;
 	}
 	

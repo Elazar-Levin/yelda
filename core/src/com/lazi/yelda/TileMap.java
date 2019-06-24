@@ -12,7 +12,7 @@ public class TileMap {
 		for(int x = 0;x < width;x++) {
 			for(int y = 0;y < height; y++) {
 				
-				tiles[x][y]=new Tile(ObjectArrays.terrainMap.get(map[y][x]));
+				tiles[x][y]=new Tile(map[y][x]);
 				
 				
 			//	if(Math.random() > 0.5d) {
