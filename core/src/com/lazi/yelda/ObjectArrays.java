@@ -48,6 +48,13 @@ public class ObjectArrays {
 		walls.add(TERRAIN.WATERFOUNTAIN_8_1);
 	//	walls.add(TERRAIN.WATERFOUNTAIN_9_1);  //not sure if these should be in or not
 		walls.add(TERRAIN.WAVE);
+		walls.add(TERRAIN.BRIDGE_L_1);
+		walls.add(TERRAIN.BRIDGE_L_2);
+		walls.add(TERRAIN.BRIDGE_L_3);
+		walls.add(TERRAIN.BRIDGE_L_4);
+		walls.add(TERRAIN.BRIDGE_L_5);
+		walls.add(TERRAIN.BRIDGE_L_6);
+		walls.add(TERRAIN.BRIDGE_L_7);
 		
 	}
 	private static void addAnimated()
@@ -110,6 +117,14 @@ public class ObjectArrays {
 		terrainMap.put(322,TERRAIN.BANK_B_L);
 		terrainMap.put(324,TERRAIN.BANK_B_R);
 		terrainMap.put(40,TERRAIN.WAVE);
+		terrainMap.put(1139,TERRAIN.BRIDGE_L_1);
+		terrainMap.put(1179,TERRAIN.BRIDGE_L_2);
+		terrainMap.put(1219,TERRAIN.BRIDGE_L_3);
+		terrainMap.put(1259,TERRAIN.BRIDGE_L_4);
+		terrainMap.put(1299,TERRAIN.BRIDGE_L_5);
+		terrainMap.put(1339,TERRAIN.BRIDGE_L_6);
+		terrainMap.put(1379,TERRAIN.BRIDGE_L_7);
+		//TODO: GET RID OF TERRAINS
 		
 	}
 	
@@ -178,4 +193,16 @@ public class ObjectArrays {
 			return false;
 		}
 	}
+	public static boolean isWall(TERRAIN terrain, int level,int x,int y)//TODO: possibly add another terrain for the background, so we can check the background too
+	{
+		if(walls.contains(terrain, false))
+		{
+			return true;//TODO: hardcoded for now, later will check if is wall based on current level
+		}
+		else
+		{
+			return false;
+		}
+	}
+	//TODO: do canGoBehind method
 }

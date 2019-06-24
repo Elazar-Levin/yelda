@@ -41,6 +41,21 @@ public class TerrainHandler {
 				return atlas.findRegion("bank_b_l");
 			case BANK_B_R:
 				return atlas.findRegion("bank_b_r");
+			case BRIDGE_L_1:
+				return atlas.findRegion("bridge_l_1");
+			case BRIDGE_L_2:
+				return atlas.findRegion("bridge_l_2");
+			case BRIDGE_L_3:
+				return atlas.findRegion("bridge_l_3");
+			case BRIDGE_L_4:
+				return atlas.findRegion("bridge_l_4");
+			case BRIDGE_L_5:
+				return atlas.findRegion("bridge_l_5");
+			case BRIDGE_L_6:
+				return atlas.findRegion("bridge_l_6");
+			case BRIDGE_L_7:
+				return atlas.findRegion("bridge_l_7");
+				
 			default:
 				return atlas.findRegion("basic_grass");
 		}

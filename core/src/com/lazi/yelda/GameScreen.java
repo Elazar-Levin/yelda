@@ -30,7 +30,8 @@ public class GameScreen extends AbstractScreen {
 	private Main appp;
 	private float animationTimer=0f;
 	private boolean goBehind=false;
-	
+	private static int WIDTH;
+	private static int HEIGHT;
 	
 	public GameScreen(Main app) {
 		super(app);
@@ -38,7 +39,8 @@ public class GameScreen extends AbstractScreen {
 		ObjectArrays.initialise();
 		TerrainHandler TerrainHandler= new TerrainHandler(app);
 		//standingSouth = new Texture("res/player1_front.png");//TODO: update sprites
-		
+		WIDTH=Gdx.graphics.getWidth();
+		HEIGHT=Gdx.graphics.getHeight();
 		
 	
 		
@@ -97,7 +99,7 @@ public class GameScreen extends AbstractScreen {
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-		
+		System.out.println("pause");
 	}
 	
 	public void newScreen() {

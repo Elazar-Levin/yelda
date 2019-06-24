@@ -445,4 +445,52 @@ wave
   orig: 16, 16
   offset: 0, 0
   index: 15
-  
+bridge_l_1
+  rotate: false
+  xy: 400, 352
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+bridge_l_2
+  rotate: false
+  xy: 400, 368
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+bridge_l_3
+  rotate: false
+  xy: 400, 384
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+bridge_l_4
+  rotate: false
+  xy: 400, 400
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+bridge_l_5
+  rotate: false
+  xy: 400, 416
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+bridge_l_6
+  rotate: false
+  xy: 400, 432
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+bridge_l_7
+  rotate: false
+  xy: 400, 448
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
