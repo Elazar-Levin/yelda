@@ -24,19 +24,9 @@ public class GameScreen extends AbstractScreen {
 	private Texture standingSouth;
 	private TextureRegion grass;
 	private TextureRegion water;
-	private Animation wf1; 
-	private Animation wf2; 
-	private Animation wf3; 
-	private Animation wf4; 
-	private Animation wf5; 
-	private Animation wf6; 
-	private Animation wf7; 
-	private Animation wf8; 
-	private Animation wf9; 
-	private Animation wf7_1; 
-	private Animation wf8_1; 
-	private Animation wf9_1; 
+
 	private TileMap map;
+	//private TileMap background;
 	private Main appp;
 	private float animationTimer=0f;
 	private boolean goBehind=false;
@@ -51,21 +41,7 @@ public class GameScreen extends AbstractScreen {
 		
 		
 	
-		TextureAtlas atlas1 = new TextureAtlas(Gdx.files.internal("res/Overworld.atlas"));//TODO: use the terrain handler class to take in a terrain, and optionally a delta, and return a texture region object. will neaten up code a lot
-		water = atlas1.findRegion("basic_water");
-		grass = atlas1.findRegion("basic_grass");//TODO: update sprites
-		wf1=new Animation(0.3f,atlas1.findRegions("water_fountain_1"),PlayMode.LOOP);
-		wf2=new Animation(0.3f,atlas1.findRegions("water_fountain_2"),PlayMode.LOOP);
-		wf3=new Animation(0.3f,atlas1.findRegions("water_fountain_3"),PlayMode.LOOP);
-		wf4=new Animation(0.3f,atlas1.findRegions("water_fountain_4"),PlayMode.LOOP);
-		wf5=new Animation(0.3f,atlas1.findRegions("water_fountain_5"),PlayMode.LOOP);
-		wf6=new Animation(0.3f,atlas1.findRegions("water_fountain_6"),PlayMode.LOOP);
-		wf7=new Animation(0.3f,atlas1.findRegions("water_fountain_7"),PlayMode.LOOP);
-		wf8=new Animation(0.3f,atlas1.findRegions("water_fountain_8"),PlayMode.LOOP);
-		wf9=new Animation(0.3f,atlas1.findRegions("water_fountain_9"),PlayMode.LOOP);
-		wf7_1=new Animation(0.3f,atlas1.findRegions("water_fountain_7_1"),PlayMode.LOOP);
-		wf8_1=new Animation(0.3f,atlas1.findRegions("water_fountain_8_1"),PlayMode.LOOP);
-		wf9_1=new Animation(0.3f,atlas1.findRegions("water_fountain_9_1"),PlayMode.LOOP);
+		
 		batch = new SpriteBatch();
 		
 		TextureAtlas atlas = app.getAssetManager().get("res/character.atlas", TextureAtlas.class);
@@ -96,7 +72,8 @@ public class GameScreen extends AbstractScreen {
 			new Animation(0.3f,atlas.findRegions("player1_idle_west"),PlayMode.LOOP_PINGPONG)
 		);
 		
-		map = new TileMap(500,500);
+		map = new TileMap(500,500,ObjectArrays.map);
+		//background = new TileMap(500,500,ObjectArrays.background);
 		player = new Actor(map, 20, 20, animations);
 		camera = new Camera();
 		controller = new PlayerController(player);
@@ -156,31 +133,54 @@ public class GameScreen extends AbstractScreen {
 		float worldStarX = Gdx.graphics.getWidth()/2 - camera.getCameraX()*Settings.SCALED_TILE_SIZE;
 		float worldStarY = Gdx.graphics.getHeight()/2 - camera.getCameraY()*Settings.SCALED_TILE_SIZE;
 		
-		for(int x = 0; x < map.getWidth();x++) {
-			for(int y = 0; y < map.getHeight(); y++) {
+		//for(int x = 0; x < map.getWidth();x++) {
+		int hold1=0;
+		if(player.getX()-11<=0)
+		{
+			hold1=0;
+		}
+		else
+		{
+			hold1=player.getX()-11;
+		}
+		for(int x = hold1; (x <= player.getX()+11)&&x<map.getWidth();x++) {
+			int hold2=0;
+			if(player.getY()-8<=0)
+			{
+				hold2=0;
+			}
+			else
+			{
+				hold2=player.getY()-8;
+			} 
+			//for(int y = 0; y < map.getHeight(); y++) {
+			for(int y = hold2; y <=player.getY()+8 && y<map.getHeight(); y++) {
 				TextureRegion render = null;
 				
-				if(ObjectArrays.needsGrass.contains(map.getTile(x, y).getTerrain(),false))
+				if(ObjectArrays.needsGrass.contains(map.getTile(x, y).getTerrain(),false))//TODO: replace this with a layered map, so instead of always having grass behind certain tiles, we decide for each specifically
 				{
 					batch.draw(TerrainHandler.getTextureRegion(TERRAIN.MAIN_GRASS),worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
 				}
-				if(ObjectArrays.animated.contains(map.getTile(x, y).getTerrain(),false))
+				if(ObjectArrays.isAnimated(map.getTile(x, y).getTerrain()))
 				{
 					map.getTile(x, y).setAnimated(true);
 				}
 				if(map.getTile(x, y).isAnimated())//tile is animated
 				{
 					//do animated tilesets here
+				
+					
 					render=TerrainHandler.getTextureRegion(map.getTile(x, y).getTerrain(), animationTimer);
 					
 					
 				}
 				else//tile isnt animated
 				{
+					
 					render=TerrainHandler.getTextureRegion(map.getTile(x, y).getTerrain());
 				}
 				 
-				
+			//	batch.draw(TerrainHandler.getTextureRegion(background.getTile(x, y).getTerrain(), animationTimer),worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
 				batch.draw(render,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
 				
 			}
@@ -188,15 +188,36 @@ public class GameScreen extends AbstractScreen {
 		Array<FancyTile> tileArray=new Array();//array holding the 9 squares around and including the character
 		
 		//add values to tileArray
-		tileArray.add(new FancyTile(map,player.getX()-1,player.getY()-1));
-		tileArray.add(new FancyTile(map,player.getX()-1,player.getY()));
-		tileArray.add(new FancyTile(map,player.getX()-1,player.getY()+1));
-		tileArray.add(new FancyTile(map,player.getX(),player.getY()-1));
+		if(player.getX()!=0)
+		{
+			if(player.getY()!=0)
+			{
+				tileArray.add(new FancyTile(map,player.getX()-1,player.getY()-1));
+			}
+			tileArray.add(new FancyTile(map,player.getX()-1,player.getY()));
+			if(player.getY()!=map.getHeight()-1)
+			{
+				tileArray.add(new FancyTile(map,player.getX()-1,player.getY()+1));
+			}
+		}
+		if(player.getY()!=0)
+		{
+			tileArray.add(new FancyTile(map,player.getX(),player.getY()-1));
+		}
 		tileArray.add(new FancyTile(map,player.getX(),player.getY()));
-		tileArray.add(new FancyTile(map,player.getX(),player.getY()+1));
-		tileArray.add(new FancyTile(map,player.getX()+1,player.getY()-1));
+		if(player.getY()!=map.getHeight()-1)
+		{
+			tileArray.add(new FancyTile(map,player.getX(),player.getY()+1));
+		}
+		if(player.getY()!=0)
+		{
+			tileArray.add(new FancyTile(map,player.getX()+1,player.getY()-1));
+		}
 		tileArray.add(new FancyTile(map,player.getX()+1,player.getY()));
-		tileArray.add(new FancyTile(map,player.getX()+1,player.getY()+1));
+		if(player.getY()!=map.getHeight()-1)
+		{
+			tileArray.add(new FancyTile(map,player.getX()+1,player.getY()+1));
+		}
 		
 		
 		batch.draw(player.getSprite(), 
@@ -205,7 +226,7 @@ public class GameScreen extends AbstractScreen {
 				Settings.SCALED_TILE_SIZE, 
 				Settings.SCALED_TILE_SIZE*1.5f);
 		
-		for(int i=0;i<9;i++)
+		for(int i=0;i<tileArray.size;i++)
 		{
 			
 			if(ObjectArrays.canGoBehind.contains(tileArray.get(i).getTile().getTerrain(),false))//if this tile must must be rendered in front of the player

@@ -277,3 +277,172 @@ water_fountain_9_1
   orig: 16, 16
   offset: 0, 0
   index: 2
+bank_r
+  rotate: false
+  xy: 64, 112
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+bank_l
+  rotate: false
+  xy: 32, 112
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+bank_t
+  rotate: false
+  xy: 48, 96
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1	
+bank_b
+  rotate: false
+  xy: 48, 128
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+bank_t_r
+  rotate: false
+  xy: 64, 96
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+bank_t_l
+  rotate: false
+  xy: 32, 96
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+bank_b_r
+  rotate: false
+  xy: 64, 128
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1	
+bank_b_l
+  rotate: false
+  xy: 32, 128
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+wave
+  rotate: false
+  xy: 0, 16
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 0
+wave
+  rotate: false
+  xy: 16, 16
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+wave
+  rotate: false
+  xy: 32, 16
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+wave
+  rotate: false
+  xy: 48, 16
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+wave
+  rotate: false
+  xy: 0, 32
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+wave
+  rotate: false
+  xy: 16, 32
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 5
+wave
+  rotate: false
+  xy: 32, 32
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 6
+wave
+  rotate: false
+  xy: 48, 32
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 7
+wave
+  rotate: false
+  xy: 48, 112
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 8
+wave
+  rotate: false
+  xy: 48, 112
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 9
+wave
+  rotate: false
+  xy: 48, 112
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 10
+wave
+  rotate: false
+  xy: 48, 112
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 11
+wave
+  rotate: false
+  xy: 48, 112
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 12
+wave
+  rotate: false
+  xy: 48, 112
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 13
+wave
+  rotate: false
+  xy: 48, 112
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 14
+wave
+  rotate: false
+  xy: 48, 112
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 15
+  

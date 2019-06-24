@@ -25,6 +25,22 @@ public class TerrainHandler {
 				return atlas.findRegion("basic_grass");
 			case MAIN_WATER:
 				return atlas.findRegion("basic_water");
+			case BANK_T:
+				return atlas.findRegion("bank_t");
+			case BANK_B:
+				return atlas.findRegion("bank_b");
+			case BANK_L:
+				return atlas.findRegion("bank_l");
+			case BANK_R:
+				return atlas.findRegion("bank_r");
+			case BANK_T_L:
+				return atlas.findRegion("bank_t_l");
+			case BANK_T_R:
+				return atlas.findRegion("bank_t_r");
+			case BANK_B_L:
+				return atlas.findRegion("bank_b_l");
+			case BANK_B_R:
+				return atlas.findRegion("bank_b_r");
 			default:
 				return atlas.findRegion("basic_grass");
 		}
@@ -61,6 +77,9 @@ public class TerrainHandler {
 				return (TextureRegion) new Animation(0.3f,atlas.findRegions("water_fountain_8_1"),PlayMode.LOOP).getKeyFrame(animationTimer);
 			case WATERFOUNTAIN_9_1:
 				return (TextureRegion) new Animation(0.3f,atlas.findRegions("water_fountain_9_1"),PlayMode.LOOP).getKeyFrame(animationTimer);
+			case WAVE:
+				return (TextureRegion) new Animation(0.3f,atlas.findRegions("wave"),PlayMode.LOOP).getKeyFrame(animationTimer);
+			
 			default:
 				return (TextureRegion) new Animation(0.3f,atlas.findRegions("water_fountain_1"),PlayMode.LOOP).getKeyFrame(animationTimer);
 		}

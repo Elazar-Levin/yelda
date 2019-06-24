@@ -30,6 +30,7 @@ public class Actor {
 	
 	private AnimationSet animations;
 	
+	private int level;//this represents the players current height, allowing it to only do collisions neccesary for its level.//TODO:
 	private double lives;
 	private double damage;
 	public Actor(TileMap map, int x, int y, AnimationSet animations) {
@@ -39,6 +40,7 @@ public class Actor {
 		this.worldX = x;
 		this.worldY = y;
 		this.animations = animations;
+		level=1;
 		map.getTile(x, y).setActor(this);
 		this.state = ACTOR_STATE.STANDING;
 		this.facing = DIRECTION.SOUTH;
@@ -116,7 +118,7 @@ public class Actor {
 			facing=dir;
 			return false;
 		}
-		if(ObjectArrays.walls.contains(map.getTile(x+dir.getDx(), y+dir.getDy()).getTerrain(), false))
+		if(ObjectArrays.isWall(map.getTile(x+dir.getDx(), y+dir.getDy()).getTerrain(),level))
 		{
 			facing=dir;
 			return false;
