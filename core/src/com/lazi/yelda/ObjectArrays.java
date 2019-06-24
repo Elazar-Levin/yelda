@@ -15,7 +15,7 @@ public class ObjectArrays {
 	public static Array<TERRAIN> canGoBehind;
 	public static Array<TERRAIN> needsGrass;
 	public static int[][] map;
-	//public static int[][] background;
+	public static int[][] background;
 	public static Map<Integer,TERRAIN> terrainMap;
 	
 	
@@ -26,7 +26,7 @@ public class ObjectArrays {
 		canGoBehind =new Array<TERRAIN>();
 		needsGrass =new Array<TERRAIN>();
 		map=new int[501][501];
-		//background=new int[501][501];
+		background=new int[501][501];
 		terrainMap=new HashMap<Integer,TERRAIN>() ;
 		addWalls();
 		addAnimated();
@@ -41,12 +41,12 @@ public class ObjectArrays {
 		walls.add(TERRAIN.WATERFOUNTAIN_4);
 		walls.add(TERRAIN.WATERFOUNTAIN_5);
 		walls.add(TERRAIN.WATERFOUNTAIN_6);
-		walls.add(TERRAIN.WATERFOUNTAIN_7);
+		//walls.add(TERRAIN.WATERFOUNTAIN_7);//not sure if these should be in or not
 		walls.add(TERRAIN.WATERFOUNTAIN_8);
-		walls.add(TERRAIN.WATERFOUNTAIN_9);
-		walls.add(TERRAIN.WATERFOUNTAIN_7_1);
+	//	walls.add(TERRAIN.WATERFOUNTAIN_9);//not sure if these should be in or not
+	//	walls.add(TERRAIN.WATERFOUNTAIN_7_1);//not sure if these should be in or not
 		walls.add(TERRAIN.WATERFOUNTAIN_8_1);
-		walls.add(TERRAIN.WATERFOUNTAIN_9_1);
+	//	walls.add(TERRAIN.WATERFOUNTAIN_9_1);  //not sure if these should be in or not
 		walls.add(TERRAIN.WAVE);
 		
 	}
@@ -137,7 +137,7 @@ public class ObjectArrays {
 				map[i][j]=Integer.parseInt(entries.get(i)[j]);
 			}
 		}
-		/*
+		
 		handle =Gdx.files.internal("res/mainlevel1_background.csv");
 		text=handle.readString();
 		//System.out.println(text);
@@ -157,10 +157,10 @@ public class ObjectArrays {
 			for(int j=0;j<entries.get(i).length-1;j++)//not sure why, but using full length throws error
 			{
 			
-				//background[i][j]=Integer.parseInt(entries.get(i)[j]);
+				background[i][j]=Integer.parseInt(entries.get(i)[j]);
 			}
 		}
-		*/
+		
 		
 	}
 	public static boolean isAnimated(TERRAIN terrain)

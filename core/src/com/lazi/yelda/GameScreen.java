@@ -26,7 +26,7 @@ public class GameScreen extends AbstractScreen {
 	private TextureRegion water;
 
 	private TileMap map;
-	//private TileMap background;
+	private TileMap background;
 	private Main appp;
 	private float animationTimer=0f;
 	private boolean goBehind=false;
@@ -73,7 +73,7 @@ public class GameScreen extends AbstractScreen {
 		);
 		
 		map = new TileMap(500,500,ObjectArrays.map);
-		//background = new TileMap(500,500,ObjectArrays.background);
+		background = new TileMap(500,500,ObjectArrays.background);
 		player = new Actor(map, 20, 20, animations);
 		camera = new Camera();
 		controller = new PlayerController(player);
@@ -133,7 +133,7 @@ public class GameScreen extends AbstractScreen {
 		float worldStarX = Gdx.graphics.getWidth()/2 - camera.getCameraX()*Settings.SCALED_TILE_SIZE;
 		float worldStarY = Gdx.graphics.getHeight()/2 - camera.getCameraY()*Settings.SCALED_TILE_SIZE;
 		
-		//for(int x = 0; x < map.getWidth();x++) {
+		
 		int hold1=0;
 		if(player.getX()-11<=0)
 		{
@@ -153,14 +153,14 @@ public class GameScreen extends AbstractScreen {
 			{
 				hold2=player.getY()-8;
 			} 
-			//for(int y = 0; y < map.getHeight(); y++) {
+			
 			for(int y = hold2; y <=player.getY()+8 && y<map.getHeight(); y++) {
 				TextureRegion render = null;
 				
-				if(ObjectArrays.needsGrass.contains(map.getTile(x, y).getTerrain(),false))//TODO: replace this with a layered map, so instead of always having grass behind certain tiles, we decide for each specifically
-				{
-					batch.draw(TerrainHandler.getTextureRegion(TERRAIN.MAIN_GRASS),worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
-				}
+				//if(ObjectArrays.needsGrass.contains(map.getTile(x, y).getTerrain(),false))//TODO: replace this with a layered map, so instead of always having grass behind certain tiles, we decide for each specifically
+				//{
+				//	batch.draw(TerrainHandler.getTextureRegion(TERRAIN.MAIN_GRASS),worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
+				//}
 				if(ObjectArrays.isAnimated(map.getTile(x, y).getTerrain()))
 				{
 					map.getTile(x, y).setAnimated(true);
@@ -180,7 +180,7 @@ public class GameScreen extends AbstractScreen {
 					render=TerrainHandler.getTextureRegion(map.getTile(x, y).getTerrain());
 				}
 				 
-			//	batch.draw(TerrainHandler.getTextureRegion(background.getTile(x, y).getTerrain(), animationTimer),worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
+				batch.draw(TerrainHandler.getTextureRegion(background.getTile(x, y).getTerrain()),worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
 				batch.draw(render,worldStarX+x*Settings.SCALED_TILE_SIZE, worldStarY+y*Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE, Settings.SCALED_TILE_SIZE);
 				
 			}
